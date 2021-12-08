@@ -1,0 +1,258 @@
+[tilespec]
+
+; Client capabilities supported by this tileset
+options = "+Freeciv-tilespec-Devel-2019-Jul-03"
+
+; A simple name for the tileset specified by this file
+name = "Project Vectron"
+
+; Sprite (not) used in the intro screen
+main_intro_file    = "misc/intro"
+
+; Always try this one first
+priority = 0
+
+; We don't have a versioning scheme yet
+version = "wip"
+
+; Summary and full description of the tileset
+summary = _("Project Vectron tileset")
+description = _("\
+Project Vectron aims at providing a scalable tileset based on vector\
+ graphics. For Vectron!")
+
+; This is a generalist tileset, we don't specialize for a specific ruleset
+;for_ruleset = ""
+
+; Tile sizes
+; Main terrain sprites
+normal_tile_width  = 360
+normal_tile_height = 120
+hex_side = 16
+is_hex = TRUE
+type = "isometric"
+
+; Small sprites (eg terrain output)
+small_tile_width   = 20
+small_tile_height  = 40
+
+; TODO docs
+fog_style = "Auto"
+
+; Use a single sprite for fog in every direction
+darkness_style = "CardinalSingle"
+
+; Offset for flags and other sprites
+activity_offset_x = 0
+activity_offset_y = 0
+city_flag_offset_x = 0
+city_flag_offset_y = 0
+city_offset_x = 0
+city_offset_y = 0
+city_size_offset_x = 0
+city_size_offset_y = 0
+citybar_offset_y = 0
+occupied_offset_x = 0
+occupied_offset_y = 0
+select_offset_x = 0
+select_offset_y = 0
+tilelabel_offset_y = 0
+unit_default_orientation = "s"
+unit_flag_offset_x = 0
+unit_flag_offset_y = 0
+unit_offset_x = 0
+unit_offset_y = 0
+unit_upkeep_offset_y = 0
+unit_upkeep_small_offset_y = 0
+
+; The map is rendered in "layers", just like any decent image editor
+; supports. The setting below allows to change the layer drawing order. The
+; first layer in the list will be drawn below the others; the second on top
+; of it, and so on. No layer can be omitted from the list, nor can new ones
+; be added.
+layer_order =
+  "Background",
+  "Terrain1",
+  "Terrain2",
+  "Darkness",
+  "Terrain3",
+  "Water",
+  "Roads",
+  "Special1",
+  "Grid1",
+  "City1",
+  "Special2",
+  "Fog",
+  "Unit",
+  "Special3",
+  "BaseFlags",
+  "City2",
+  "Grid2",
+  "Overlays",
+  "TileLabel",
+  "CityBar",
+  "FocusUnit",
+  "Goto",
+  "WorkerTask",
+  "Editor",
+  "InfraWork"
+
+; The files where to look for graphics
+files =
+  "misc/overlays.spec",
+  "misc/citybar.spec",
+  "misc/small.spec",
+  "misc/governments.spec",
+  "misc/specialists.spec",
+  "misc/events.spec",
+  "misc/buildings-large.spec",
+  "misc/wonders-large.spec",
+  "misc/flags-large.spec",
+  "misc/shields-large.spec",
+  "misc/cursors.spec",
+  "misc/space.spec",
+  "misc/techs.spec",
+  "misc/treaty.spec",
+  "misc/icons.spec",
+  "misc/editor.spec",
+  "amplio2/units.spec",
+  "amplio2/extra_units.spec",
+  "amplio2/nuke.spec",
+  "amplio2/explosions.spec",
+  "hexemplio/activities.spec",
+  "hexemplio/bases.spec",
+  "hexemplio/cities.spec",
+  "hexemplio/grid.spec",
+  "hexemplio/embellishments.spec",
+  "hexemplio/forests.spec",
+  "hexemplio/hills.spec",
+  "hexemplio/mountains.spec",
+  "hexemplio/rivers.spec",
+  "hexemplio/roads.spec",
+  "hexemplio/roads-rails.spec",
+  "hexemplio/roads-maglevs.spec",
+  "hexemplio/select.spec",
+  "vectron/terrain.spec",
+  "hexemplio/tiles.spec",
+  "hexemplio/unitcost.spec",
+  "hexemplio/unitextras.spec",
+  "hexemplio/water1.spec",
+  "hexemplio/water2.spec",
+  "hexemplio/water3.spec"
+
+; Color definitions from the main project
+*include "misc/colors.tilespec"
+
+; How terrains are drawn
+; Quite simple spec for now, no matching at all
+[layer0]
+;match_types =
+
+[layer1]
+;match_types =
+
+[layer2]
+;match_types =
+
+; All terrain types follow
+[tile_lake]
+tag = "lake"
+num_layers = 1
+
+[tile_coast]
+tag = "coast"
+num_layers = 1
+
+[tile_floor]
+tag = "floor"
+num_layers = 1
+
+[tile_inaccessible]
+tag = "inaccessible"
+num_layers = 1
+
+[tile_arctic]
+tag = "arctic"
+num_layers = 1
+
+[tile_desert]
+tag = "desert"
+num_layers = 1
+
+[tile_forest]
+tag = "forest"
+num_layers = 1
+
+[tile_grassland]
+tag = "grassland"
+num_layers = 1
+
+[tile_hills]
+tag = "hills"
+num_layers = 1
+
+[tile_jungle]
+tag = "jungle"
+num_layers = 1
+
+[tile_mountains]
+tag = "mountains"
+num_layers = 1
+
+[tile_plains]
+tag = "plains"
+num_layers = 1
+
+[tile_swamp]
+tag = "swamp"
+num_layers = 1
+
+[tile_tundra]
+tag = "tundra"
+num_layers = 1
+
+[extras]
+styles =
+    { "name",                   "style"
+      "base.airstrip",          "Single1"
+      "base.airbase",           "Single1"
+      "base.buoy",              "Single1"
+      "base.fortress",          "Single1"
+      "base.outpost",           "Single1"
+      "extra.ruins",            "Single1"
+      "road.maglev",            "Single1"
+      "road.pave",              "Single1"
+      "road.rail",              "Single1"
+      "road.road",              "Single1"
+      "road.river",             "Single1"
+      "ts.arctic_ivory",        "Single1"
+      "ts.buffalo",             "Single1"
+      "ts.coal",                "Single1"
+      "ts.fish",                "Single1"
+      "ts.fruit",               "Single1"
+      "ts.furs",                "Single1"
+      "ts.gems",                "Single1"
+      "ts.gold",                "Single1"
+      "ts.grassland_resources", "Single1"
+      "ts.horses",              "Single1"
+      "ts.iron",                "Single1"
+      "ts.oasis",               "Single1"
+      "ts.oil",                 "Single1"
+      "ts.peat",                "Single1"
+      "ts.pheasant",            "Single1"
+      "ts.seals",               "Single1"
+      "ts.silk",                "Single1"
+      "ts.spice",               "Single1"
+      "ts.tundra_game",         "Single1"
+      "ts.whales",              "Single1"
+      "ts.wheat",               "Single1"
+      "ts.wine",                "Single1"
+      "tx.irrigation",          "Single1"
+      "tx.fallout",             "Single1"
+      "tx.farmland",            "Single1"
+      "tx.mine",                "Single1"
+      "tx.oil_mine",            "Single1"
+      "tx.oil_rig",             "Single1"
+      "tx.pollution",           "Single1"
+      "tx.village",             "Single1"
+    }
