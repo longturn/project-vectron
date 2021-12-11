@@ -134,6 +134,7 @@ files =
   "hexemplio/select.spec",
   "vectron/movement_selection.spec",
   "vectron/terrain.spec",
+  "vectron/terrain_blending.spec",
   "vectron/tile_addons.spec",
   "vectron/tile_specials.spec",
   "hexemplio/tiles.spec",
