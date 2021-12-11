@@ -83,12 +83,6 @@ tiles = { "row", "column","tag"
   3,    0,   "tx.pollution"
   3,    0,   "tx.village"
 
-  ; Goto sprites
-  3,    0,   "path.exhausted_mp"
-  3,    0,   "path.normal"
-  3,    0,   "path.step"
-  3,    0,   "path.waypoint"
-
   ; Other required sprites
   3,    0,   "mask.tile"
   3,    0,   "t.dither_tile"

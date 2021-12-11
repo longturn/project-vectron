@@ -21,9 +21,11 @@ pixel_border = 1
 
 tiles = { "row", "column","tag"
   ; Goto sprites
-  0, 0, "path.step"
-  0, 1, "path.exhausted_mp"
-  0, 2, "path.normal"
-  0, 3, "path.waypoint"
-  0, 4, "user.attention"
+  0,    0,   "path.exhausted_mp"
+  0,    1,   "path.normal"
+  0,    2,   "path.step"
+  0,    3,   "path.waypoint"
+
+  ; Other required sprites
+  0,    4,   "user.attention"
 }
