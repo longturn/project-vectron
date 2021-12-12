@@ -30,4 +30,3 @@ Add the local setup above to an environment variable:
 As changes are made to the `*.svg` files, export them to `*.png` files:
 
 * `.../project-vectron$ make`
-
