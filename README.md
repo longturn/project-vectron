@@ -23,11 +23,11 @@ Capture the location of the `share/freeciv21` directory.
 
 Add the local setup above to an environment variable:
 
-    Edit `.bashrc`: `nano ~/.bashrc`
-    Add something like this to the bottom: `export FREECIV_DATA_PATH=~/some/path/project-vectron:~/install/freeciv21/share/freeciv21`
-    Source the file: `. ~/.bashrc`
+* Edit `.bashrc`: `nano ~/.bashrc`
+* Add something like this to the bottom: `export FREECIV_DATA_PATH=~/some/path/project-vectron:~/install/freeciv21/share/freeciv21`
+* Source the file: `. ~/.bashrc`
 
 As changes are made to the `*.svg` files, export them to `*.png` files:
 
-    `.../project-vectron$ make`
+* `.../project-vectron$ make`
 
