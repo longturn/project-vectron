@@ -13,7 +13,7 @@ Perform SSH based clone: `git clone git@github.com:[user-name]/project-vectron.g
 
 Enter project directory: `cd project-vectron`.
 
-Add upstream: `git remote add upstream https://github.com/longturn/project-vectorn.git`.
+Add upstream: `git remote add upstream https://github.com/longturn/project-vectron.git`.
 
 ## Install
 
