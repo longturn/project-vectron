@@ -28,4 +28,10 @@ tiles = { "row", "column","tag"
 
   ; Other required sprites
   0,    4,   "user.attention"
+
+  ; Selected unit
+  1,     0,  "unit.select0"
+  1,     1,  "unit.select1"
+  1,     2,  "unit.select2"
+  1,     3,  "unit.select3"
 }

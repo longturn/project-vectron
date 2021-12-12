@@ -131,7 +131,6 @@ files =
   "hexemplio/roads.spec",
   "hexemplio/roads-rails.spec",
   "hexemplio/roads-maglevs.spec",
-  "hexemplio/select.spec",
   "vectron/movement_selection.spec",
   "vectron/terrain.spec",
   "vectron/terrain_blending.spec",
