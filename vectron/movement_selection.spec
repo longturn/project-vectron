@@ -34,4 +34,8 @@ tiles = { "row", "column","tag"
   1,     1,  "unit.select1"
   1,     2,  "unit.select2"
   1,     3,  "unit.select3"
+  1,     4,  "unit.select4"
+  2,     0,  "unit.select5"
+  2,     1,  "unit.select6"
+  2,     2,  "unit.select7"
 }
