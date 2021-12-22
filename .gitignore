@@ -1,2 +1,3 @@
 # Ignore generated png's
-vectron/*.png
+vectron/*/*.png
+mockups/*.png
