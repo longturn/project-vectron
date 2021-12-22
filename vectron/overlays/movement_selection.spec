@@ -10,7 +10,7 @@ artists = "
 "
 
 [file]
-gfx = "vectron/movement_selection"
+gfx = "vectron/overlays/movement_selection"
 
 [grid_main]
 x_top_left = 1

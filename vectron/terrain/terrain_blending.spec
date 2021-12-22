@@ -10,7 +10,7 @@ artists = "
 "
 
 [file]
-gfx = "vectron/terrain_blending"
+gfx = "vectron/terrain/terrain_blending"
 
 [grid_main]
 x_top_left = 1

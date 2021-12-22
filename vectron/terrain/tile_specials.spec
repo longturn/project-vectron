@@ -10,7 +10,7 @@ artists = "
 "
 
 [file]
-gfx = "vectron/tile_specials"
+gfx = "vectron/terrain/tile_specials"
 
 [grid_main]
 x_top_left = 1
