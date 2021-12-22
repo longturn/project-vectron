@@ -11785,12 +11785,12 @@
          x="577.15607"
          y="-289.76794"
          style="fill:#ffffff;stroke-width:0.264583"
-         id="tspan2126">order: S, WSW, WNW,</tspan><tspan
+         id="tspan2126">order: SE, S, W,</tspan><tspan
          sodipodi:role="line"
          x="577.15607"
          y="-280.28955"
          style="fill:#ffffff;stroke-width:0.264583"
-         id="tspan2131">N, ENE and ESE</tspan></text>
+         id="tspan2131">NW, N and E</tspan></text>
     <g
        id="g3149"
        transform="translate(552.45546,236.28884)">
@@ -12060,7 +12060,7 @@
     </g>
     <g
        id="g14334"
-       transform="translate(0.61808125)">
+       transform="matrix(-1,0,0,1,95.161095,0)">
       <path
          id="rect1272-6"
          style="font-variation-settings:normal;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000"
@@ -12143,7 +12143,7 @@
     </g>
     <g
        id="g14368"
-       transform="matrix(-1,0,0,1,190.76178,0)">
+       transform="translate(96.218766)">
       <path
          id="path14336"
          style="font-variation-settings:normal;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000"
