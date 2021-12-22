@@ -28,7 +28,7 @@ Project Vectron aims at providing a scalable tileset based on vector\
 ; Main terrain sprites
 normal_tile_width  = 360
 normal_tile_height = 120
-hex_side = 16
+hex_side = 120
 is_hex = TRUE
 type = "isometric"
 
@@ -131,6 +131,7 @@ files =
   "hexemplio/roads.spec",
   "hexemplio/roads-rails.spec",
   "hexemplio/roads-maglevs.spec",
+  "vectron/overlays/grid.spec",
   "vectron/overlays/movement_selection.spec",
   "vectron/terrain/terrain.spec",
   "vectron/terrain/terrain_blending.spec",
