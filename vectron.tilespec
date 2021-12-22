@@ -61,7 +61,7 @@ unit_default_orientation = "s"
 unit_flag_offset_x = 0
 unit_flag_offset_y = 0
 unit_offset_x = 0
-unit_offset_y = 0
+unit_offset_y = 20
 unit_upkeep_offset_y = 0
 unit_upkeep_small_offset_y = 0
 
@@ -136,6 +136,7 @@ files =
   "vectron/terrain/terrain_blending.spec",
   "vectron/terrain/tile_addons.spec",
   "vectron/terrain/tile_specials.spec",
+  "vectron/units/foot_units.spec",
   "hexemplio/tiles.spec",
   "hexemplio/unitcost.spec",
   "hexemplio/unitextras.spec",
