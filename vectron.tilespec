@@ -122,7 +122,6 @@ files =
   "hexemplio/activities.spec",
   "hexemplio/bases.spec",
   "hexemplio/grid.spec",
-  "hexemplio/embellishments.spec",
   "hexemplio/forests.spec",
   "hexemplio/hills.spec",
   "hexemplio/mountains.spec",
@@ -139,6 +138,7 @@ files =
   "vectron/infrastructure/cities.spec",
   "vectron/overlays/grid.spec",
   "vectron/overlays/movement_selection.spec",
+  "vectron/terrain/embellishments.spec",
   "vectron/terrain/terrain.spec",
   "vectron/terrain/terrain_blending.spec",
   "vectron/terrain/tile_addons.spec",
@@ -190,7 +190,8 @@ num_layers = 1
 
 [tile_grassland]
 tag = "grassland"
-num_layers = 1
+blend_layer = 1
+num_layers = 2
 
 [tile_hills]
 tag = "hills"
