@@ -192,6 +192,7 @@ num_layers = 1
 tag = "grassland"
 blend_layer = 1
 num_layers = 2
+layer1_is_tall = TRUE
 
 [tile_hills]
 tag = "hills"
