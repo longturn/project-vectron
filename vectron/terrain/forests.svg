@@ -8,9 +8,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="3972"
-   height="1087.0001"
-   viewBox="0 0 1050.925 287.60212"
+   width="1806.0002"
+   height="544"
+   viewBox="0 0 477.83756 143.93334"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
@@ -894,18 +894,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.4919358"
-     inkscape:cx="993.55121"
-     inkscape:cy="11.683007"
+     inkscape:zoom="0.34785114"
+     inkscape:cx="1326.5976"
+     inkscape:cy="604.18739"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1007"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
+     inkscape:window-width="1365"
+     inkscape:window-height="908"
+     inkscape:window-x="405"
+     inkscape:window-y="259"
+     inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -921,7 +921,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -930,7 +930,7 @@
      id="layer3"
      inkscape:label="boundaries"
      style="display:inline"
-     transform="translate(-3.6656857e-6,430.21249)">
+     transform="translate(2.9310584e-5,430.21249)">
     <rect
        style="font-variation-settings:normal;display:inline;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#00ff00;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000"
        id="rect2997-6"
@@ -1026,7 +1026,8 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="guides"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(3.297627e-5)">
     <g
        id="g1510-0"
        style="display:inline;stroke-width:1.00002"
@@ -2123,7 +2124,7 @@
      inkscape:groupmode="layer"
      id="layer1"
      style="display:inline"
-     transform="translate(-3.6656857e-6,430.21249)">
+     transform="translate(2.9310584e-5,430.21249)">
     <g
        id="g5370-29"
        transform="translate(16.554577,1.2064652)"
