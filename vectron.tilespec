@@ -139,6 +139,7 @@ files =
   "vectron/overlays/grid.spec",
   "vectron/overlays/movement_selection.spec",
   "vectron/terrain/embellishments.spec",
+  "vectron/terrain/forests.spec",
   "vectron/terrain/terrain.spec",
   "vectron/terrain/terrain_blending.spec",
   "vectron/terrain/tile_addons.spec",
@@ -194,8 +195,9 @@ layer0_match_type = "land"
 
 [tile_forest]
 tag = "forest"
-num_layers = 1
+num_layers = 2
 layer0_match_type = "land"
+layer1_is_tall = TRUE
 
 [tile_grassland]
 tag = "grassland"
@@ -211,8 +213,9 @@ layer0_match_type = "land"
 
 [tile_jungle]
 tag = "jungle"
-num_layers = 1
+num_layers = 2
 layer0_match_type = "land"
+layer1_is_tall = TRUE
 
 [tile_mountains]
 tag = "mountains"
