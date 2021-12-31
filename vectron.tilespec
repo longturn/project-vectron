@@ -165,6 +165,7 @@ match_types = "water", "land"
 [tile_lake]
 tag = "lake"
 num_layers = 1
+layer0_is_tall = TRUE
 
 [tile_coast]
 tag = "coast"
@@ -176,26 +177,31 @@ layer0_sprite_type = "corner"
 [tile_floor]
 tag = "floor"
 num_layers = 1
+layer0_is_tall = TRUE
 layer0_match_type = "water"
 
 [tile_inaccessible]
 tag = "inaccessible"
 num_layers = 1
+layer0_is_tall = TRUE
 layer0_match_type = "land"
 
 [tile_arctic]
 tag = "arctic"
 num_layers = 1
+layer0_is_tall = TRUE
 layer0_match_type = "land"
 
 [tile_desert]
 tag = "desert"
 num_layers = 1
+layer0_is_tall = TRUE
 layer0_match_type = "land"
 
 [tile_forest]
 tag = "forest"
 num_layers = 2
+layer0_is_tall = TRUE
 layer0_match_type = "land"
 layer1_is_tall = TRUE
 
@@ -203,38 +209,45 @@ layer1_is_tall = TRUE
 tag = "grassland"
 blend_layer = 1
 num_layers = 2
+layer0_is_tall = TRUE
 layer0_match_type = "land"
 layer1_is_tall = TRUE
 
 [tile_hills]
 tag = "hills"
 num_layers = 1
+layer0_is_tall = TRUE
 layer0_match_type = "land"
 
 [tile_jungle]
 tag = "jungle"
 num_layers = 2
+layer0_is_tall = TRUE
 layer0_match_type = "land"
 layer1_is_tall = TRUE
 
 [tile_mountains]
 tag = "mountains"
 num_layers = 1
+layer0_is_tall = TRUE
 layer0_match_type = "land"
 
 [tile_plains]
 tag = "plains"
 num_layers = 1
+layer0_is_tall = TRUE
 layer0_match_type = "land"
 
 [tile_swamp]
 tag = "swamp"
 num_layers = 1
+layer0_is_tall = TRUE
 layer0_match_type = "land"
 
 [tile_tundra]
 tag = "tundra"
 num_layers = 1
+layer0_is_tall = TRUE
 layer0_match_type = "land"
 
 [extras]
