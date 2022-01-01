@@ -61,4 +61,44 @@ tiles = { "row", "column","tag"
   3,    5,  "t.l0.coast_cell_r101"
   3,    5,  "t.l0.coast_cell_r111"
 
+  ; Swamps
+  7,    0,  "t.l1.swamp_cell_d111"
+  7,    1,  "t.l1.swamp_cell_d110"
+  7,    2,  "t.l1.swamp_cell_d100"
+  7,    3,  "t.l1.swamp_cell_d000"
+
+  8,    0,  "t.l1.swamp_cell_d001"
+  8,    1,  "t.l1.swamp_cell_d010"
+  8,    2,  "t.l1.swamp_cell_d011"
+  8,    3,  "t.l1.swamp_cell_d101"
+
+  7,    4,  "t.l1.swamp_cell_l000"
+  7,    4,  "t.l1.swamp_cell_l010"
+  7,    5,  "t.l1.swamp_cell_l001"
+  7,    5,  "t.l1.swamp_cell_l011"
+
+  8,    4,  "t.l1.swamp_cell_l100"
+  8,    4,  "t.l1.swamp_cell_l110"
+  8,    5,  "t.l1.swamp_cell_l111"
+  8,    5,  "t.l1.swamp_cell_l101"
+
+  10,    0,  "t.l1.swamp_cell_u111"
+  10,    1,  "t.l1.swamp_cell_u011"
+  10,    2,  "t.l1.swamp_cell_u001"
+  10,    3,  "t.l1.swamp_cell_u000"
+
+  9,    0,  "t.l1.swamp_cell_u100"
+  9,    1,  "t.l1.swamp_cell_u010"
+  9,    2,  "t.l1.swamp_cell_u110"
+  9,    3,  "t.l1.swamp_cell_u101"
+
+  9,    4,  "t.l1.swamp_cell_r000"
+  9,    4,  "t.l1.swamp_cell_r010"
+  9,    5,  "t.l1.swamp_cell_r001"
+  9,    5,  "t.l1.swamp_cell_r011"
+
+  10,    4,  "t.l1.swamp_cell_r100"
+  10,    4,  "t.l1.swamp_cell_r110"
+  10,    5,  "t.l1.swamp_cell_r101"
+  10,    5,  "t.l1.swamp_cell_r111"
 }
