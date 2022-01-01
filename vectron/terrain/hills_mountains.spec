@@ -29,4 +29,5 @@ tiles = { "row", "column","tag"
   ; Mountain sprites
   1,    0,  "t.l1.mountains1"
   1,    1,  "t.l1.mountains2"
+  1,    2,  "t.l1.mountains3"
 }
