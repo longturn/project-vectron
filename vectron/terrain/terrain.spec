@@ -62,6 +62,7 @@ tiles = { "row", "column","tag"
 
   ; Swamp
   2,    0,  "t.l0.swamp1"
+  2,    1,  "t.l0.swamp2"
 
   ; Desert
   3,    0,  "t.l0.desert1"
