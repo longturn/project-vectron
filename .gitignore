@@ -1,3 +1,14 @@
+# Ignore generated svg's and spec's
+vectron/terrain/borders/plains.*
+vectron/terrain/borders/forest.*
+vectron/terrain/borders/swamp.*
+vectron/terrain/borders/water.*
+vectron/terrain/borders/grassland.*
+vectron/terrain/borders/mountains.*
+vectron/terrain/borders/ice.*
+vectron/terrain/borders/desert.*
+
 # Ignore generated png's
+vectron/*/*/*.png
 vectron/*/*.png
 mockups/*.png

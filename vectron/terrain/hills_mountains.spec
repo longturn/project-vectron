@@ -21,13 +21,13 @@ pixel_border = 1
 
 tiles = { "row", "column","tag"
   ; Hill sprites
-  0,    0,  "t.l1.hills1"
-  0,    1,  "t.l1.hills2"
-  0,    2,  "t.l1.hills3"
-  0,    3,  "t.l1.hills4"
+  0,    0,  "t.l0.hills1"
+  0,    1,  "t.l0.hills2"
+  0,    2,  "t.l0.hills3"
+  0,    3,  "t.l0.hills4"
 
   ; Mountain sprites
-  1,    0,  "t.l1.mountains1"
-  1,    1,  "t.l1.mountains2"
-  1,    2,  "t.l1.mountains3"
+  1,    0,  "t.l0.mountains1"
+;  1,    1,  "t.l0.mountains2"
+  1,    2,  "t.l0.mountains2"
 }

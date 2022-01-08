@@ -50,12 +50,6 @@ tiles = { "row", "column","tag"
   0,    8,  "t.l0.grassland24"
   0,    9,  "t.l0.grassland27"
 
-  ; Forest
-  0,    0,  "t.l0.forest1"
-
-  ; Jungle
-  0,    0,  "t.l0.jungle1"
-
   ; Plains
   1,    0,  "t.l0.plains1"
   1,    1,  "t.l0.plains2"
@@ -69,12 +63,6 @@ tiles = { "row", "column","tag"
 
   ; Tundra
   4,    0,  "t.l0.tundra1"
-
-  ; Mountains -- FIXME missing
-  4,    0,  "t.l0.mountains1"
-
-  ; Hills -- FIXME missing
-  4,    0,  "t.l0.hills1"
 
   ; Arctic
   5,    0,  "t.l0.arctic1"
