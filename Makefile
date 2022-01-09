@@ -23,7 +23,7 @@ clean:
 .PHONY: all clean
 
 _borders: generate_terrain.py vectron/terrain/borders/generator.svg
-	python generate_terrain.py
+	python3 generate_terrain.py
 .PHONY: _borders
 
 $(borders_svg): _borders
