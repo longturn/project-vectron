@@ -4,10 +4,10 @@ import os
 
 groups = [
     'plains',
-    'forest',
-    'swamp',
-    'water',
     'grassland',
+    'swamp',
+    'tundra',
+    'water',
     'mountains',
     'ice',
     'desert',
@@ -19,7 +19,7 @@ os.makedirs(folder, exist_ok=True)
 columns = len(groups)
 rows = len(groups)**2
 
-debug = False  # Set to true to display which sprites are used
+debug = False # Set to true to display which sprites are used
 
 cell_width = 360
 cell_height = 120
@@ -114,7 +114,7 @@ for g0 in groups:
         sprites.add(f'{g2}_{g3}_right')
         # Bottom part
         sprites.add(f'{g0}_{g1}_left')
-        sprites.add(f'{g0}_{g2}_center')
+        sprites.add(f'{g0}_{g2}_centre')
         sprites.add(f'{g0}_{g3}_right')
     for sprite in sprites:
         node = generator.find(f'.//g[@id="{sprite}"]', ns)  # They need to be groups
@@ -145,7 +145,7 @@ for g0 in groups:
         ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(cell_width // 2)}, {px(-cell_height // 2)})', attrib={'xlink:href': f'#{g3}_{g2}_left'})
         # Bottom part
         ET.SubElement(g, 'use', x='0', y='0', attrib={'xlink:href': f'#{g0}_{g1}_left'})
-        ET.SubElement(g, 'use', x='0', y='0', attrib={'xlink:href': f'#{g0}_{g2}_center'})
+        ET.SubElement(g, 'use', x='0', y='0', attrib={'xlink:href': f'#{g0}_{g2}_centre'})
         ET.SubElement(g, 'use', x='0', y='0', attrib={'xlink:href': f'#{g0}_{g3}_right'})
 
         # Debugging
@@ -156,7 +156,7 @@ for g0 in groups:
             ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'top left: #{g1}_{g2}_right'
             ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'top right: #{g3}_{g2}_left'
             ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'bottom left: #{g0}_{g1}_left'
-            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'bottom center: #{g0}_{g2}_center'
+            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'bottom centre: #{g0}_{g2}_centre'
             ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'bottom right: #{g0}_{g3}_right'
 
     ET.ElementTree(svg).write(os.path.join(folder, f'{g0}.svg'))
