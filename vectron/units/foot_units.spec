@@ -16,7 +16,7 @@ gfx = "vectron/units/foot_units"
 x_top_left = 1
 y_top_left = 1
 dx = 360
-dy = 160
+dy = 180
 pixel_border = 1
 
 tiles = { "row", "column","tag"
