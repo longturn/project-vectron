@@ -9,7 +9,7 @@ files += $(patsubst %.svg,%.png,$(wildcard vectron/*/*/*.svg))
 inkscape_export_option ?= $(shell (inkscape --help | grep \\--export-filename >/dev/null && echo ' -o') || echo ' -e')
 
 # Generate a list of border files
-borders = plains forest swamp water grassland mountains ice desert
+borders = plains grassland swamp tundra water mountains ice desert
 borders := $(addprefix vectron/terrain/borders/,$(borders))
 borders_spec = $(addsuffix .spec,$(borders))
 borders_svg = $(addsuffix .svg,$(borders))
