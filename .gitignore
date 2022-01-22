@@ -2,6 +2,7 @@
 vectron/terrain/borders/plains.*
 vectron/terrain/borders/forest.*
 vectron/terrain/borders/swamp.*
+vectron/terrain/borders/tundra.*
 vectron/terrain/borders/water.*
 vectron/terrain/borders/grassland.*
 vectron/terrain/borders/mountains.*
