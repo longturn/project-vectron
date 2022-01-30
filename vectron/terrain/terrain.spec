@@ -39,6 +39,7 @@ tiles = { "row", "column","tag"
   0,    0,  "t.l0.grassland23"
   0,    0,  "t.l0.grassland25"
   0,    0,  "t.l0.grassland26"
+  0,    0,  "t.l0.grassland27"
 
   0,    1,  "t.l0.grassland3"
   0,    2,  "t.l0.grassland6"
@@ -48,7 +49,6 @@ tiles = { "row", "column","tag"
   0,    6,  "t.l0.grassland18"
   0,    7,  "t.l0.grassland21"
   0,    8,  "t.l0.grassland24"
-  0,    9,  "t.l0.grassland27"
 
   ; Plains
   1,    0,  "t.l0.plains1"
