@@ -137,20 +137,21 @@ files =
   "vectron/overlays/grid.spec",
   "vectron/overlays/movement_selection.spec",
   "vectron/terrain/forests.spec",
+  "vectron/terrain/jungles.spec",
   "vectron/terrain/hills_mountains.spec",
   "vectron/terrain/terrain.spec",
   "vectron/terrain/terrain_blending.spec",
   "vectron/terrain/tile_addons.spec",
   "vectron/terrain/tile_specials.spec",
   "vectron/terrain/water.spec",
-  "vectron/terrain/borders/plains.spec",
-  "vectron/terrain/borders/forest.spec",
-  "vectron/terrain/borders/swamp.spec",
-  "vectron/terrain/borders/water.spec",
-  "vectron/terrain/borders/grassland.spec",
-  "vectron/terrain/borders/mountains.spec",
-  "vectron/terrain/borders/ice.spec",
-  "vectron/terrain/borders/desert.spec",
+;  "vectron/terrain/borders/plains.spec",
+;  "vectron/terrain/borders/grassland.spec",
+;  "vectron/terrain/borders/swamp.spec",
+;  "vectron/terrain/borders/tundra.spec",
+;  "vectron/terrain/borders/water.spec",
+;  "vectron/terrain/borders/mountains.spec",
+;  "vectron/terrain/borders/ice.spec",
+;  "vectron/terrain/borders/desert.spec",
   "vectron/units/foot_units.spec"
 
 ; Color definitions from the main project
@@ -163,7 +164,7 @@ match_types = "water", "land"
 
 [layer1]
 match_types =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 
 [layer2]
 ;match_types =
@@ -176,7 +177,7 @@ layer0_is_tall = TRUE
 layer0_match_type = "water"
 layer1_match_type = "water"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [tile_coast]
@@ -187,7 +188,7 @@ layer0_match_with = "water"
 layer0_sprite_type = "corner"
 layer1_match_type = "water"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [tile_floor]
@@ -197,7 +198,7 @@ layer0_is_tall = TRUE
 layer0_match_type = "water"
 layer1_match_type = "water"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [tile_inaccessible]
@@ -207,7 +208,7 @@ layer0_is_tall = TRUE
 layer0_match_type = "land"
 layer1_match_type = "water"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [tile_arctic]
@@ -217,7 +218,7 @@ layer0_is_tall = TRUE
 layer0_match_type = "land"
 layer1_match_type = "ice"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [tile_desert]
@@ -227,7 +228,7 @@ layer0_is_tall = TRUE
 layer0_match_type = "land"
 layer1_match_type = "desert"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [tile_forest]
@@ -235,9 +236,9 @@ tag = "forest"
 num_layers = 2
 layer0_is_tall = TRUE
 layer0_match_type = "land"
-layer1_match_type = "forest"
+layer1_match_type = "grassland"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [tile_grassland]
@@ -248,7 +249,7 @@ layer0_is_tall = TRUE
 layer0_match_type = "land"
 layer1_match_type = "grassland"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [tile_hills]
@@ -258,7 +259,7 @@ layer0_is_tall = TRUE
 layer0_match_type = "land"
 layer1_match_type = "plains"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [tile_jungle]
@@ -266,9 +267,9 @@ tag = "jungle"
 num_layers = 2
 layer0_is_tall = TRUE
 layer0_match_type = "land"
-layer1_match_type = "forest"
+layer1_match_type = "grassland"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [tile_mountains]
@@ -278,7 +279,7 @@ layer0_is_tall = TRUE
 layer0_match_type = "land"
 layer1_match_type = "mountains"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [tile_plains]
@@ -288,7 +289,7 @@ layer0_is_tall = TRUE
 layer0_match_type = "land"
 layer1_match_type = "plains"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [tile_swamp]
@@ -298,7 +299,7 @@ layer0_is_tall = TRUE
 layer0_match_type = "water"
 layer1_match_type = "swamp"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [tile_tundra]
@@ -308,7 +309,7 @@ layer0_is_tall = TRUE
 layer0_match_type = "land"
 layer1_match_type = "swamp"
 layer1_match_with =
-  "plains", "forest", "swamp", "water", "grassland", "mountains", "ice", "desert"
+  "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 layer1_sprite_type = "corner"
 
 [extras]
