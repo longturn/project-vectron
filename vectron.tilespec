@@ -1,7 +1,7 @@
 [tilespec]
 
 ; Client capabilities supported by this tileset
-options = "+Freeciv-tilespec-Devel-2019-Jul-03"
+options = "+Freeciv-tilespec-Devel-2019-Jul-03 +hex_corner"
 
 ; A simple name for the tileset specified by this file
 name = "Project Vectron"
