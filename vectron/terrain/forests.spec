@@ -21,7 +21,7 @@ pixel_border = 1
 
 tiles = { "row", "column","tag"
   ; Forest sprites
-  0,    0,  "t.l0.forest1"
-  0,    1,  "t.l0.forest2"
-  0,    2,  "t.l0.forest3"
+  0,    0,  "t.l1.forest1"
+  0,    1,  "t.l1.forest2"
+  0,    2,  "t.l1.forest3"
 }

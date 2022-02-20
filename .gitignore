@@ -1,15 +1,18 @@
 # Ignore generated svg's and spec's
-vectron/terrain/borders/plains.*
-vectron/terrain/borders/forest.*
-vectron/terrain/borders/swamp.*
-vectron/terrain/borders/tundra.*
-vectron/terrain/borders/water.*
-vectron/terrain/borders/grassland.*
-vectron/terrain/borders/mountains.*
-vectron/terrain/borders/ice.*
-vectron/terrain/borders/desert.*
+# Old ones that may still be lying around
+/vectron/terrain/borders/plains.*
+/vectron/terrain/borders/forest.*
+/vectron/terrain/borders/swamp.*
+/vectron/terrain/borders/tundra.*
+/vectron/terrain/borders/water.*
+/vectron/terrain/borders/grassland.*
+/vectron/terrain/borders/mountains.*
+/vectron/terrain/borders/ice.*
+/vectron/terrain/borders/desert.*
+# New one
+/vectron/terrain/borders/corners.*
 
 # Ignore generated png's
-vectron/*/*/*.png
-vectron/*/*.png
-mockups/*.png
+/vectron/*/*/*.png
+/vectron/*/*.png
+/mockups/*.png

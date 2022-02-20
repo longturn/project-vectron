@@ -18,13 +18,13 @@ folder = os.path.join('vectron', 'terrain', 'borders')
 os.makedirs(folder, exist_ok=True)
 
 cells = 2 * len(groups)**3
-columns = int(math.floor(math.sqrt(cells)))
+columns = int(math.floor(math.sqrt(cells))) // 2
 rows = int(math.ceil(cells / columns))
 
 debug = False # Set to true to display which sprites are used
 
-cell_width = 120
-cell_height = 120
+cell_width = 180
+cell_height = 60
 
 total_width = columns * (cell_width + 1) + 1
 total_height = rows * (cell_height + 1) + 1
@@ -74,6 +74,29 @@ def cell_x(x, dx=1):
 def cell_y(y, dy=2):
     return px(y * (cell_height + 1) + dy)
 
+# Spec file
+with open(os.path.join(folder, f'corners.spec'), 'wt') as f:
+    f.write(preamble)
+    f.write('tiles = { "row", "column", "tag"\n')
+    for i, (g0, g1, g2) in enumerate(it.product(groups, groups, groups)):
+        # Left hand side (for the tileset, right)
+        #  \   2
+        # 1 \___
+        #   /
+        #  /   0
+        x, y = xy(2 * i)
+        f.write(f'  {y}, {x}, "t.l0.hex_cell_right_{g1[0]}_{g2[0]}_{g0[0]}"\n')
+
+        # Then right hand side (for the tileset, left)
+        #  2   /
+        # ____/ 1
+        #     \
+        #  0   \
+
+        x, y = xy(2 * i + 1)
+        f.write(f'  {y}, {x}, "t.l0.hex_cell_left_{g1[0]}_{g2[0]}_{g0[0]}"\n')
+    f.write('}\n')
+
 # SVG file
 svg = ET.Element('svg',
                  version='1.1',
@@ -94,7 +117,7 @@ for defs in generator.findall('defs', ns):
 
 # Copy sprites into a hidden layer
 hidden = ET.SubElement(svg, 'g', id='generator', style='display: none')
-sprites = set()
+sprites = set(groups)
 for g0, g1 in it.product(groups, groups):
     sprites.add(f'{g0}_{g1}_left')
     sprites.add(f'{g0}_{g1}_centre')
@@ -114,27 +137,10 @@ for x in range(1, columns + 1):
 for y in range(1, rows + 1):
     ET.SubElement(grid, 'use', y=cell_y(y, dy=0), attrib={'xlink:href': '#hgridrect'})
 
-# Define the clipping paths
+# Define the clipping rectangle
 # Left
-clip = ET.SubElement(svg, 'clipPath', id='leftclip')
-commands = ' '.join([f'M 0,{px(cell_height // 2 - 1)} ']
-                    + [f'v {px(1)} h {px(1)}' for x in range(cell_height // 2)]
-                    + [f'h {px(cell_width - cell_height // 2)}']
-                    + [f'v {px(-cell_height)}']
-                    + [f'h {px(-cell_width + cell_height // 2 - 1)}']
-                    + [f'v {px(1)} h {px(-1)}' for x in range(cell_height // 2)]
-                    )
-ET.SubElement(clip, 'path', d=commands, x='0', y=px(-1))
-# Right
-clip = ET.SubElement(svg, 'clipPath', id='rightclip')
-commands = ' '.join([f'M {px(1)},{px(-1)} ']
-                    + [f'h {px(cell_width - cell_height // 2)}']
-                    + [f'v {px(1)} h {px(1)}' for x in range(cell_height // 2)]
-                    + [f'h {px(-1)} v {px(1)}' for x in range(cell_height // 2)]
-                    + [f'h {px(-cell_width + cell_height // 2 - 1)}']
-                    + [f'v {px(-cell_height)}']
-                    )
-ET.SubElement(clip, 'path', d=commands, x='0', y=px(-1))
+clip = ET.SubElement(svg, 'clipPath', id='cliprect')
+ET.SubElement(clip, 'rect', x='0', y=px(-1), width=px(cell_width), height=px(cell_height))
 
 for i, (g0, g1, g2) in enumerate(it.product(groups, groups, groups)):
     # Left hand side first
@@ -146,12 +152,17 @@ for i, (g0, g1, g2) in enumerate(it.product(groups, groups, groups)):
     x, y = xy(2 * i)
 
     # Images
-    g = ET.SubElement(svg, 'g', id=f'tile_{x}_{y}', transform=f'translate({cell_x(x)}, {cell_y(y)})', attrib={'clip-path': 'url(#leftclip)'})
+    g = ET.SubElement(svg, 'g', id=f'tile_{x}_{y}', transform=f'translate({cell_x(x)}, {cell_y(y)})', attrib={'clip-path': 'url(#cliprect)'})
+
+    # Terrains (offsetting automatically; the numbers work but are a bit arbitrary)
+    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate(0, {px(-2.5 * cell_height)})', attrib={'xlink:href': f'#{g2}'})
+    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width)}, {px(-1.5 * cell_height)})', attrib={'xlink:href': f'#{g1}'})
+    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate(0, {px(-0.5 * cell_height)})', attrib={'xlink:href': f'#{g0}'})
 
     # Borders (offsetting automatically; the numbers work but are a bit arbitrary)
-    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-2*cell_width)}, {px(-cell_height // 2)})', attrib={'xlink:href': f'#{g1}_{g2}_right'})
-    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width // 2)}, 0)', attrib={'xlink:href': f'#{g0}_{g2}_centre'})
-    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width // 2)}, 0)', attrib={'xlink:href': f'#{g0}_{g1}_left'})
+    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width)}, {px(-2.5 * cell_height)})', attrib={'xlink:href': f'#{g1}_{g2}_right'})
+    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate(0, {px(-0.5 * cell_height)})', attrib={'xlink:href': f'#{g0}_{g2}_centre'})
+    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate(0, {px(-0.5 * cell_height)})', attrib={'xlink:href': f'#{g0}_{g1}_left'})
 
     # Debugging
     if debug:
@@ -171,12 +182,17 @@ for i, (g0, g1, g2) in enumerate(it.product(groups, groups, groups)):
     x, y = xy(2 * i + 1)
 
     # Images
-    g = ET.SubElement(svg, 'g', id=f'tile_{x}_{y}', transform=f'translate({cell_x(x)}, {cell_y(y)})', attrib={'clip-path': 'url(#rightclip)'})
+    g = ET.SubElement(svg, 'g', id=f'tile_{x}_{y}', transform=f'translate({cell_x(x)}, {cell_y(y)})', attrib={'clip-path': 'url(#cliprect)'})
+
+    # Terrains (offsetting automatically; the numbers work but are a bit arbitrary)
+    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width)}, {px(-2.5 * cell_height)})', attrib={'xlink:href': f'#{g2}'})
+    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate(0, {px(-1.5 * cell_height)})', attrib={'xlink:href': f'#{g1}'})
+    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width)}, {px(-0.5 * cell_height)})', attrib={'xlink:href': f'#{g0}'})
 
     # Borders (offsetting automatically; the numbers work but are a bit arbitrary)
-    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate(0, {px(-cell_height // 2)})', attrib={'xlink:href': f'#{g1}_{g2}_left'})
-    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-3 * cell_width // 2)}, 0)', attrib={'xlink:href': f'#{g0}_{g2}_centre'})
-    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-3 * cell_width // 2)}, 0)', attrib={'xlink:href': f'#{g0}_{g1}_right'})
+    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate(0, {px(-2.5 * cell_height)})', attrib={'xlink:href': f'#{g1}_{g2}_left'})
+    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width)}, {px(-0.5 * cell_height)})', attrib={'xlink:href': f'#{g0}_{g2}_centre'})
+    ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width)}, {px(-0.5 * cell_height)})', attrib={'xlink:href': f'#{g0}_{g1}_right'})
 
     # Debugging
     if debug:

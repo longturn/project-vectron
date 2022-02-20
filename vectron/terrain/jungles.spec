@@ -21,5 +21,5 @@ pixel_border = 1
 
 tiles = { "row", "column","tag"
   ; Jungle sprites
-  0,    0,  "t.l0.jungle1"
+  0,    0,  "t.l1.jungle1"
 }

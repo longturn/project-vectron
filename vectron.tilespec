@@ -37,7 +37,7 @@ small_tile_width   = 20
 small_tile_height  = 40
 
 ; TODO docs
-fog_style = "Auto"
+fog_style = "Sprite"
 
 ; Use a single sprite for fog in every direction
 darkness_style = "CardinalSingle"
@@ -144,14 +144,7 @@ files =
   "vectron/terrain/tile_addons.spec",
   "vectron/terrain/tile_specials.spec",
   "vectron/terrain/water.spec",
-;  "vectron/terrain/borders/plains.spec",
-;  "vectron/terrain/borders/grassland.spec",
-;  "vectron/terrain/borders/swamp.spec",
-;  "vectron/terrain/borders/tundra.spec",
-;  "vectron/terrain/borders/water.spec",
-;  "vectron/terrain/borders/mountains.spec",
-;  "vectron/terrain/borders/ice.spec",
-;  "vectron/terrain/borders/desert.spec",
+  "vectron/terrain/borders/corners.spec",
   "vectron/units/foot_units.spec"
 
 ; Color definitions from the main project
@@ -160,11 +153,11 @@ files =
 ; How terrains are drawn
 ; Quite simple spec for now, no matching at all
 [layer0]
-match_types = "water", "land"
-
-[layer1]
 match_types =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
+
+[layer1]
+;match_types =
 
 [layer2]
 ;match_types =
@@ -172,145 +165,120 @@ match_types =
 ; All terrain types follow
 [tile_lake]
 tag = "lake"
-num_layers = 2
-layer0_is_tall = TRUE
+num_layers = 1
 layer0_match_type = "water"
-layer1_match_type = "water"
-layer1_match_with =
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
 
 [tile_coast]
 tag = "coast"
-num_layers = 2
+num_layers = 1
 layer0_match_type = "water"
-layer0_match_with = "water"
-layer0_sprite_type = "corner"
-layer1_match_type = "water"
-layer1_match_with =
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
 
 [tile_floor]
 tag = "floor"
-num_layers = 2
-layer0_is_tall = TRUE
+num_layers = 1
 layer0_match_type = "water"
-layer1_match_type = "water"
-layer1_match_with =
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
 
 [tile_inaccessible]
 tag = "inaccessible"
 num_layers = 1
-layer0_is_tall = TRUE
-layer0_match_type = "land"
-layer1_match_type = "water"
-layer1_match_with =
+layer0_match_type = "water"
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
 
 [tile_arctic]
 tag = "arctic"
-num_layers = 2
-layer0_is_tall = TRUE
-layer0_match_type = "land"
-layer1_match_type = "ice"
-layer1_match_with =
+num_layers = 1
+layer0_match_type = "ice"
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
 
 [tile_desert]
 tag = "desert"
-num_layers = 2
-layer0_is_tall = TRUE
-layer0_match_type = "land"
-layer1_match_type = "desert"
-layer1_match_with =
+num_layers = 1
+layer0_match_type = "desert"
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
 
 [tile_forest]
 tag = "forest"
 num_layers = 2
-layer0_is_tall = TRUE
-layer0_match_type = "land"
-layer1_match_type = "grassland"
-layer1_match_with =
+layer0_match_type = "grassland"
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
+layer1_is_tall = TRUE
 
 [tile_grassland]
 tag = "grassland"
 blend_layer = 1
-num_layers = 2
-layer0_is_tall = TRUE
-layer0_match_type = "land"
-layer1_match_type = "grassland"
-layer1_match_with =
+num_layers = 1
+layer0_match_type = "grassland"
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
 
 [tile_hills]
 tag = "hills"
 num_layers = 2
-layer0_is_tall = TRUE
-layer0_match_type = "land"
-layer1_match_type = "plains"
-layer1_match_with =
+layer0_match_type = "plains"
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
+layer1_is_tall = TRUE
 
 [tile_jungle]
 tag = "jungle"
 num_layers = 2
-layer0_is_tall = TRUE
-layer0_match_type = "land"
-layer1_match_type = "grassland"
-layer1_match_with =
+layer0_match_type = "grassland"
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
+layer1_is_tall = TRUE
 
 [tile_mountains]
 tag = "mountains"
 num_layers = 2
-layer0_is_tall = TRUE
-layer0_match_type = "land"
-layer1_match_type = "mountains"
-layer1_match_with =
+layer0_match_type = "mountains"
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
+layer1_is_tall = TRUE
 
 [tile_plains]
 tag = "plains"
-num_layers = 2
-layer0_is_tall = TRUE
-layer0_match_type = "land"
-layer1_match_type = "plains"
-layer1_match_with =
+num_layers = 1
+layer0_match_type = "plains"
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
 
 [tile_swamp]
 tag = "swamp"
-num_layers = 2
-layer0_is_tall = TRUE
-layer0_match_type = "water"
-layer1_match_type = "swamp"
-layer1_match_with =
+num_layers = 1
+layer0_match_type = "swamp"
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
 
 [tile_tundra]
 tag = "tundra"
-num_layers = 2
-layer0_is_tall = TRUE
-layer0_match_type = "land"
-layer1_match_type = "swamp"
-layer1_match_with =
+num_layers = 1
+layer0_match_type = "tundra"
+layer0_sprite_type = "hex_corner"
+layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
-layer1_sprite_type = "corner"
 
 [extras]
 styles =
