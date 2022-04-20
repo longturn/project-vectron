@@ -123,7 +123,7 @@ files =
   "hexemplio/bases.spec",
   "hexemplio/grid.spec",
   "hexemplio/forests.spec",
-  "hexemplio/rivers.spec",
+  "vectron/terrain/rivers.spec",
   "hexemplio/roads.spec",
   "hexemplio/roads-rails.spec",
   "hexemplio/roads-maglevs.spec",
@@ -325,7 +325,7 @@ styles =
       "road.pave",              "Single1"
       "road.rail",              "Single1"
       "road.road",              "Single1"
-      "road.river",             "Single1"
+      "road.river",             "River"
       "ts.arctic_ivory",        "Single1"
       "ts.buffalo",             "Single1"
       "ts.coal",                "Single1"
@@ -348,7 +348,7 @@ styles =
       "ts.whales",              "Single1"
       "ts.wheat",               "Single1"
       "ts.wine",                "Single1"
-      "tx.irrigation",          "Single1"
+      "tx.irrigation",          "Single2"
       "tx.fallout",             "Single1"
       "tx.farmland",            "Single1"
       "tx.mine",                "Single1"
