@@ -144,7 +144,14 @@ files =
   "vectron/terrain/tile_addons.spec",
   "vectron/terrain/tile_specials.spec",
   "vectron/terrain/water.spec",
-  "vectron/terrain/borders/corners.spec",
+  "vectron/terrain/borders/corners_plains.spec",
+  "vectron/terrain/borders/corners_grassland.spec",
+  "vectron/terrain/borders/corners_swamp.spec",
+  "vectron/terrain/borders/corners_tundra.spec",
+  "vectron/terrain/borders/corners_water.spec",
+  "vectron/terrain/borders/corners_mountains.spec",
+  "vectron/terrain/borders/corners_ice.spec",
+  "vectron/terrain/borders/corners_desert.spec",
   "vectron/units/foot_units.spec"
 
 ; Color definitions from the main project

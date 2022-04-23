@@ -9,8 +9,17 @@
 /vectron/terrain/borders/mountains.*
 /vectron/terrain/borders/ice.*
 /vectron/terrain/borders/desert.*
-# New one
 /vectron/terrain/borders/corners.*
+# New ones
+/vectron/terrain/borders/corners_plains.*
+/vectron/terrain/borders/corners_forest.*
+/vectron/terrain/borders/corners_swamp.*
+/vectron/terrain/borders/corners_tundra.*
+/vectron/terrain/borders/corners_water.*
+/vectron/terrain/borders/corners_grassland.*
+/vectron/terrain/borders/corners_mountains.*
+/vectron/terrain/borders/corners_ice.*
+/vectron/terrain/borders/corners_desert.*
 
 # Ignore generated png's
 /vectron/*/*/*.png

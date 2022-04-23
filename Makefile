@@ -10,7 +10,7 @@ inkscape_export_option ?= $(shell (inkscape --help | grep \\--export-filename >/
 
 # Generate a list of border files
 borders = plains grassland swamp tundra water mountains ice desert
-borders := $(addprefix vectron/terrain/borders/,$(borders))
+borders := $(addprefix vectron/terrain/borders/corners_,$(borders))
 borders_spec = $(addsuffix .spec,$(borders))
 borders_svg = $(addsuffix .svg,$(borders))
 files += $(borders_spec) $(addsuffix .png,$(borders))
