@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import itertools as it
+import math
 import os
 
 groups = [
@@ -16,13 +17,14 @@ groups = [
 folder = os.path.join('vectron', 'terrain', 'borders')
 os.makedirs(folder, exist_ok=True)
 
-columns = len(groups)
-rows = len(groups)**2
+cells = 2 * len(groups)**2
+columns = int(math.floor(math.sqrt(cells))) // 2
+rows = int(math.ceil(cells / columns))
 
 debug = False # Set to true to display which sprites are used
 
-cell_width = 360
-cell_height = 120
+cell_width = 180
+cell_height = 60
 
 total_width = columns * (cell_width + 1) + 1
 total_height = rows * (cell_height + 1) + 1
@@ -47,7 +49,7 @@ artists = "
 "
 
 [file]
-gfx = "vectron/terrain/borders/{{}}"
+gfx = "vectron/terrain/borders/corners_{{}}"
 
 [grid_main]
 x_top_left = 1
@@ -74,27 +76,36 @@ def cell_y(y, dy=2):
 
 for g0 in groups:
     # Spec file
-    with open(os.path.join(folder, f'{g0}.spec'), 'wt') as f:
+    with open(os.path.join(folder, f'corners_{g0}.spec'), 'wt') as f:
         f.write(preamble.format(g0))
         f.write('tiles = { "row", "column", "tag"\n')
-        for i, (g1, g2, g3) in enumerate(it.product(groups, groups, groups)):
-            x, y = xy(i)
+        for i, (g1, g2) in enumerate(it.product(groups, groups)):
+            # Left hand side (for the tileset, right)
+            #  \   2
+            # 1 \___
+            #   /
+            #  /   0
+            x, y = xy(2 * i)
+            f.write(f'  {y}, {x}, "t.l0.hex_cell_right_{g1[0]}_{g2[0]}_{g0[0]}"\n')
 
-            #  \   2   /
-            # 1 \_____/ 3
-            #   /     \
-            #  /   0   \
-            f.write(f'  {y}, {x}, "t.l1.cellgroup_{g2[0]}_{g3[0]}_{g0[0]}_{g1[0]}"\n')
+            # Then right hand side (for the tileset, left)
+            #  2   /
+            # ____/ 1
+            #     \
+            #  0   \
+
+            x, y = xy(2 * i + 1)
+            f.write(f'  {y}, {x}, "t.l0.hex_cell_left_{g1[0]}_{g2[0]}_{g0[0]}"\n')
         f.write('}\n')
 
     # SVG file
     svg = ET.Element('svg',
-                     version='1.1',
-                     xmlns='http://www.w3.org/2000/svg',
-                     width=px(total_width) + 'mm',
-                     height=px(total_height) + 'mm',
-                     viewBox=f'0 0 {px_to_mm(total_width)} {px_to_mm(total_height)}',
-                     attrib={'xmlns:xlink': 'http://www.w3.org/1999/xlink'})
+                    version='1.1',
+                    xmlns='http://www.w3.org/2000/svg',
+                    width=px(total_width) + 'mm',
+                    height=px(total_height) + 'mm',
+                    viewBox=f'0 0 {px_to_mm(total_width)} {px_to_mm(total_height)}',
+                    attrib={'xmlns:xlink': 'http://www.w3.org/1999/xlink'})
 
     # We copy stuff from generator.svg. In principle we could use external
     # references, but my Inkscape doesn't seem to support them.
@@ -105,17 +116,13 @@ for g0 in groups:
     for defs in generator.findall('defs', ns):
         svg.append(defs)
 
-    # Copy needed sprites into a hidden layer
+    # Copy sprites into a hidden layer
     hidden = ET.SubElement(svg, 'g', id='generator', style='display: none')
-    sprites = set()
-    for g1, g2, g3 in it.product(groups, groups, groups):
-        # Top part
-        sprites.add(f'{g2}_{g1}_left')
-        sprites.add(f'{g2}_{g3}_right')
-        # Bottom part
+    sprites = set(groups)
+    for g1 in groups:
         sprites.add(f'{g0}_{g1}_left')
-        sprites.add(f'{g0}_{g2}_centre')
-        sprites.add(f'{g0}_{g3}_right')
+        sprites.add(f'{g0}_{g1}_centre')
+        sprites.add(f'{g0}_{g1}_right')
     for sprite in sprites:
         node = generator.find(f'.//g[@id="{sprite}"]', ns)  # They need to be groups
         if node is not None:
@@ -132,31 +139,68 @@ for g0 in groups:
         ET.SubElement(grid, 'use', y=cell_y(y, dy=0), attrib={'xlink:href': '#hgridrect'})
 
     # Define the clipping rectangle
+    # Left
     clip = ET.SubElement(svg, 'clipPath', id='cliprect')
     ET.SubElement(clip, 'rect', x='0', y=px(-1), width=px(cell_width), height=px(cell_height))
 
-    # Images
-    for i, (g1, g2, g3) in enumerate(it.product(groups, groups, groups)):
-        x, y = xy(i)
+    for i, (g1, g2) in enumerate(it.product(groups, groups)):
+        # Left hand side first
+        #  \   2
+        # 1 \___
+        #   /
+        #  /   0
+
+        x, y = xy(2 * i)
+
+        # Images
         g = ET.SubElement(svg, 'g', id=f'tile_{x}_{y}', transform=f'translate({cell_x(x)}, {cell_y(y)})', attrib={'clip-path': 'url(#cliprect)'})
 
-        # Top part (offsetting automatically; the numbers work but are a bit arbitrary)
-        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width // 2)}, {px(-cell_height // 2)})', attrib={'xlink:href': f'#{g1}_{g2}_right'})
-        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(cell_width // 2)}, {px(-cell_height // 2)})', attrib={'xlink:href': f'#{g3}_{g2}_left'})
-        # Bottom part
-        ET.SubElement(g, 'use', x='0', y='0', attrib={'xlink:href': f'#{g0}_{g1}_left'})
-        ET.SubElement(g, 'use', x='0', y='0', attrib={'xlink:href': f'#{g0}_{g2}_centre'})
-        ET.SubElement(g, 'use', x='0', y='0', attrib={'xlink:href': f'#{g0}_{g3}_right'})
+        # Terrains (offsetting automatically; the numbers work but are a bit arbitrary)
+        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate(0, {px(-2.5 * cell_height)})', attrib={'xlink:href': f'#{g2}'})
+        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width)}, {px(-1.5 * cell_height)})', attrib={'xlink:href': f'#{g1}'})
+        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate(0, {px(-0.5 * cell_height)})', attrib={'xlink:href': f'#{g0}'})
+
+        # Borders (offsetting automatically; the numbers work but are a bit arbitrary)
+        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width)}, {px(-2.5 * cell_height)})', attrib={'xlink:href': f'#{g1}_{g2}_right'})
+        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate(0, {px(-0.5 * cell_height)})', attrib={'xlink:href': f'#{g0}_{g2}_centre'})
+        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate(0, {px(-0.5 * cell_height)})', attrib={'xlink:href': f'#{g0}_{g1}_left'})
 
         # Debugging
         if debug:
             text = ET.SubElement(g, 'text', x='0', y='0',
-                                style='fill: #f0f', attrib={'font-size': '4'})
-            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'{g0} {g1} {g2} {g3}'
-            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'top left: #{g1}_{g2}_right'
-            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'top right: #{g3}_{g2}_left'
-            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'bottom left: #{g0}_{g1}_left'
-            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'bottom centre: #{g0}_{g2}_centre'
-            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'bottom right: #{g0}_{g3}_right'
+                                style='fill: #f0f', attrib={'font-size': '2'})
+            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'left: #{g1}_{g2}_right'
+            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'centre: #{g0}_{g2}_left'
+            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'right: #{g0}_{g1}_left'
 
-    ET.ElementTree(svg).write(os.path.join(folder, f'{g0}.svg'))
+
+        # Then right hand side
+        #  2   /
+        # ____/ 1
+        #     \
+        #  0   \
+
+        x, y = xy(2 * i + 1)
+
+        # Images
+        g = ET.SubElement(svg, 'g', id=f'tile_{x}_{y}', transform=f'translate({cell_x(x)}, {cell_y(y)})', attrib={'clip-path': 'url(#cliprect)'})
+
+        # Terrains (offsetting automatically; the numbers work but are a bit arbitrary)
+        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width)}, {px(-2.5 * cell_height)})', attrib={'xlink:href': f'#{g2}'})
+        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate(0, {px(-1.5 * cell_height)})', attrib={'xlink:href': f'#{g1}'})
+        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width)}, {px(-0.5 * cell_height)})', attrib={'xlink:href': f'#{g0}'})
+
+        # Borders (offsetting automatically; the numbers work but are a bit arbitrary)
+        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate(0, {px(-2.5 * cell_height)})', attrib={'xlink:href': f'#{g1}_{g2}_left'})
+        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width)}, {px(-0.5 * cell_height)})', attrib={'xlink:href': f'#{g0}_{g2}_centre'})
+        ET.SubElement(g, 'use', x='0', y='0', transform=f'translate({px(-cell_width)}, {px(-0.5 * cell_height)})', attrib={'xlink:href': f'#{g0}_{g1}_right'})
+
+        # Debugging
+        if debug:
+            text = ET.SubElement(g, 'text', x='0', y='0',
+                                style='fill: #f0f', attrib={'font-size': '2'})
+            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'left: #{g1}_{g2}_right'
+            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'centre: #{g0}_{g2}_left'
+            ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'right: #{g0}_{g1}_left'
+
+    ET.ElementTree(svg).write(os.path.join(folder, f'corners_{g0}.svg'))
