@@ -8,26 +8,19 @@ files += $(patsubst %.svg,%.png,$(wildcard vectron/*/*/*.svg))
 # Inkscape < 1.0 had different options. Auto-detect
 inkscape_export_option ?= $(shell (inkscape --help | grep \\--export-filename >/dev/null && echo ' -o') || echo ' -e')
 
-# Generate a list of border files
-borders = plains grassland swamp tundra water mountains ice desert
-borders := $(addprefix vectron/terrain/borders/corners_,$(borders))
-borders_spec = $(addsuffix .spec,$(borders))
-borders_svg = $(addsuffix .svg,$(borders))
-files += $(borders_spec) $(addsuffix .png,$(borders))
-
-all: ${files}
+all: _terrain_grids ${files}
 
 clean:
 	${RM} ${files}
+	${RM} -r ${terrain_grids}
 
 .PHONY: all clean
 
-_borders: generate_terrain.py vectron/terrain/borders/generator.svg
+.PHONY: _terrain_grids
+_terrain_grids: terrain_grids/Makefile
+terrain_grids/Makefile: generate_terrain.py vectron/terrain/borders/generator.svg
 	python3 generate_terrain.py
-.PHONY: _borders
-
-$(borders_svg): _borders
-$(borders_spec): _borders
+	${MAKE} -C terrain_grids
 
 %.png: %.svg
 	inkscape $< ${inkscape_export_option} $@

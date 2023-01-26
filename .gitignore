@@ -20,6 +20,8 @@
 /vectron/terrain/borders/corners_mountains.*
 /vectron/terrain/borders/corners_ice.*
 /vectron/terrain/borders/corners_desert.*
+# Newest ones
+/terrain_grids/
 
 # Ignore generated png's
 /vectron/*/*/*.png
