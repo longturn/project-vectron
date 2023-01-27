@@ -173,30 +173,32 @@ for file_groups in it.combinations(groups, 3):
     clip = ET.SubElement(svg, 'clipPath', id='cliprect')
     ET.SubElement(clip, 'rect', x='0', y=px(-1), width=px(cell_width), height=px(cell_height))
 
+    layer = g = ET.SubElement(svg, 'g')
+
     for i, (g0, g1, g2) in enumerate(it.product(file_groups, repeat=3)):
         for j, (side, tr) in enumerate(transforms.items()):
             x, y = xy(2 * i + j)
 
             # Images
-            g = ET.SubElement(svg, 'g', id=f'tile_{x}_{y}', transform=f'translate({cell_x(x)}, {cell_y(y)})', attrib={'clip-path': 'url(#cliprect)'})
+            g = ET.SubElement(layer, 'g', id=f'tile_{x}_{y}', transform=f'translate({cell_x(x)}, {cell_y(y)})', attrib={'clip-path': 'url(#cliprect)'})
 
-            # Terrains (offsetting automatically; the numbers work but are a bit arbitrary)
+            # Terrains
             ET.SubElement(g, 'use', x='0', y='0', transform=tr[0], attrib={'xlink:href': f'#{g2}'})
             ET.SubElement(g, 'use', x='0', y='0', transform=tr[1], attrib={'xlink:href': f'#{g1}'})
             ET.SubElement(g, 'use', x='0', y='0', transform=tr[2], attrib={'xlink:href': f'#{g0}'})
 
-            # Borders (offsetting automatically; the numbers work but are a bit arbitrary)
-            ET.SubElement(g, 'use', x='0', y='0', transform=tr[3], attrib={'xlink:href': f'#{g1}_{g2}_right'})
+            # Borders
+            up = f'#{g1}_{g2}_right' if side == 'left' else f'#{g1}_{g2}_left'
+            down = f'#{g0}_{g1}_left' if side == 'left' else f'#{g0}_{g1}_right'
+            ET.SubElement(g, 'use', x='0', y='0', transform=tr[3], attrib={'xlink:href': up})
             ET.SubElement(g, 'use', x='0', y='0', transform=tr[4], attrib={'xlink:href': f'#{g0}_{g2}_centre'})
-            ET.SubElement(g, 'use', x='0', y='0', transform=tr[5], attrib={'xlink:href': f'#{g0}_{g1}_left'})
+            ET.SubElement(g, 'use', x='0', y='0', transform=tr[5], attrib={'xlink:href': down})
 
             # Debugging
             if debug:
                 text = ET.SubElement(g, 'text', x='0', y='0',
                                     style='fill: #f0f', attrib={'font-size': '2'})
-                ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'left: #{g1}_{g2}_right'
-                ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'centre: #{g0}_{g2}_left'
-                ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'right: #{g0}_{g1}_left'
+                ET.SubElement(text, 'tspan',  x='0', dy='1.2em').text = f'[{side}] {g0} {g1} {g2}'
 
 
     path = os.path.join(folder, name)
