@@ -3,17 +3,22 @@ New Tileset for Freeciv21. Code name Project Vectron.
 
 ## Contribute to the Project
 
-Linux is preferred development platform. Inkscape is expected to be installed.
+Linux is preferred development platform.
 
-For Debian or Debian based (e.g. Ubuntu) systems: `sudo apt install inkscape`
-
-Fork this repository to your personal GitHut account.
+Fork this repository to your personal GitHub account.
 
 Perform SSH based clone: `git clone git@github.com:[user-name]/project-vectron.git`.
 
 Enter project directory: `cd project-vectron`.
 
 Add upstream: `git remote add upstream https://github.com/longturn/project-vectron.git`.
+
+## Prerequisites
+
+Vectron needs to be compiled before being used. For this, you need [GNU Make](https://www.gnu.org/software/make/), [Python](https://www.python.org/) (used to generate some sprites), and [rsvg-convert](https://gitlab.gnome.org/GNOME/librsvg/-/tree/main/) (to render sprites as PNG). On Ubuntu, the following command will give you the dependencies:
+
+    sudo apt install make librsvg2-bin
+
 
 ## Install
 
