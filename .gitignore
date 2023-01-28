@@ -21,9 +21,9 @@
 /vectron/terrain/borders/corners_ice.*
 /vectron/terrain/borders/corners_desert.*
 # Newest ones
-/terrain_grids/
+/tmp/
+/vectron/terrain/borders/
 
 # Ignore generated png's
-/vectron/*/*/*.png
 /vectron/*/*.png
 /mockups/*.png
