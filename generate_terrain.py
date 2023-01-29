@@ -24,22 +24,31 @@ folder = os.path.join('tmp', 'borders')
 width = 180
 height = 60
 
+px_to_mm = 0.26458335
+
 def px(x):
-    return str(x / 3.7795275591)
+    return px_to_mm * x
+
+
+def translate(tr_x, tr_y):
+    # Strange offset in the generator svg
+    dx, dy = (-9.3245926e-06, -0.08928591)
+    return f'translate({px(tr_x) - dx}, {px(tr_y) - dy})'
+
 
 transforms = {
-    'left':  (f'translate({px(-width)}, {px(-2.5 * height)})',
-              f'translate(0, {px(-1.5 * height)})',
-              f'translate({px(-width)}, {px(-0.5 * height)})',
-              f'translate(0, {px(-1.5 * height)})',
-              f'translate({px(-width)}, {px(-0.5 * height)})',
-              f'translate({px(-width)}, {px(-0.5 * height)})'),
-    'right': (f'translate(0, {px(-2.5 * height)})',
-              f'translate({px(-width)}, {px(-1.5 * height)})',
-              f'translate(0, {px(-0.5 * height)})',
-              f'translate({px(-width)}, {px(-1.5 * height)})',
-              f'translate(0, {px(-0.5 * height)})',
-              f'translate(0, {px(-0.5 * height)})'),
+    'left':  (translate(-width, -2.5 * height),
+              translate(0, -1.5 * height),
+              translate(-width, -0.5 * height),
+              translate(0, -1.5 * height),
+              translate(-width, -0.5 * height),
+              translate(-width, -0.5 * height)),
+    'right': (translate(0, -2.5 * height),
+              translate(-width, -1.5 * height),
+              translate(0, -0.5 * height),
+              translate(-width, -1.5 * height),
+              translate(0, -0.5 * height),
+              translate(0, -0.5 * height)),
 }
 
 
@@ -64,12 +73,12 @@ for sprite in gen_sprites:
 
 
 def make_svg(side, file_groups):
-    viewbox = f'0 0 {px(width)}  {px(height)}'
+    viewbox = f'0 0 {px(width)} {px(height)}'
     svg = ET.Element('svg',
                      version='1.1',
                      xmlns='http://www.w3.org/2000/svg',
-                     width=px(width) + 'mm',
-                     height=px(height) + 'mm',
+                     width=f'{px(width)}mm',
+                     height=f'{px(height)}mm',
                      viewBox=viewbox,
                      attrib={'xmlns:xlink': 'http://www.w3.org/1999/xlink'})
 
