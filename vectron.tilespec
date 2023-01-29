@@ -144,6 +144,7 @@ files =
   "vectron/terrain/tile_specials.spec",
   "vectron/terrain/water.spec",
   "vectron/terrain/borders/borders.spec",
+  "vectron/terrain/edited-borders/borders.spec",
   "vectron/units/foot_units.spec"
 
 ; Color definitions from the main project
