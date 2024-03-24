@@ -74,7 +74,7 @@ tiles = { "row", "column","tag"
   ;7,    0,  "t.l0.coast1"
 
   ; Deep ocean
-  8,    0,  "t.l0.floor1"
+  8,    0,  "t.l1.floor1"
 
   ; Missing base terrain sprites
   ; Use transparent placeholders
