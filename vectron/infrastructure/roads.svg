@@ -6,7 +6,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.2 (dc2aeda, 2022-05-15)"
-   sodipodi:docname="rivers.svg"
+   sodipodi:docname="roads.svg"
    inkscape:export-filename="rivers.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
@@ -35,8 +35,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.33589188"
-     inkscape:cx="1269.7538"
-     inkscape:cy="577.56681"
+     inkscape:cx="778.52433"
+     inkscape:cy="580.54395"
      inkscape:document-units="mm"
      inkscape:current-layer="layer4"
      inkscape:document-rotation="0"
@@ -8916,7 +8916,7 @@
      inkscape:label="rivers"
      inkscape:groupmode="layer"
      id="layer1"
-     style="display:inline"
+     style="display:none"
      transform="translate(477.5729,430.21249)">
     <path
        id="path2890-1"
@@ -9801,7 +9801,7 @@
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="roads"
-     style="display:none">
+     style="display:inline">
     <path
        style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#784421;stroke-width:1.826;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
        d="M 34.833131,20.431929 59.904394,12.337238"
