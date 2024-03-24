@@ -24,6 +24,9 @@ Project Vectron aims at providing a scalable tileset based on vector\
 ; This is a generalist tileset, we don't specialize for a specific ruleset
 ;for_ruleset = ""
 
+; Default zoom level to set when using this tileset
+preferred_scale = 33 ; percents
+
 ; Tile sizes
 ; Main terrain sprites
 normal_tile_width  = 360
@@ -154,13 +157,12 @@ files =
 *include "misc/colors.tilespec"
 
 ; How terrains are drawn
-; Quite simple spec for now, no matching at all
 [layer0]
 match_types =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
 
 [layer1]
-;match_types =
+match_types = "floor"
 
 [layer2]
 ;match_types =
@@ -184,11 +186,12 @@ layer0_match_with =
 
 [tile_floor]
 tag = "floor"
-num_layers = 1
+num_layers = 2
 layer0_match_type = "water"
 layer0_sprite_type = "hex_corner"
 layer0_match_with =
   "plains", "grassland", "swamp", "tundra", "water", "mountains", "ice", "desert"
+layer1_match_type = "floor"
 
 [tile_inaccessible]
 tag = "inaccessible"
