@@ -133,6 +133,7 @@ files =
   "hexemplio/water2.spec",
   "hexemplio/water3.spec",
   "vectron/infrastructure/cities.spec",
+  "vectron/overlays/101_hp_bars.spec",
   "vectron/overlays/grid.spec",
   "vectron/overlays/movement_selection.spec",
   "vectron/terrain/forests.spec",
