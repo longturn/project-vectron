@@ -39,7 +39,7 @@ small_tile_height  = 40
 ; TODO docs
 fog_style = "Sprite"
 
-; Use a single sprite for fog in every direction
+; Use a single sprite for fog
 darkness_style = "CardinalSingle"
 
 ; Offset for flags and other sprites
@@ -133,6 +133,7 @@ files =
   "hexemplio/water2.spec",
   "hexemplio/water3.spec",
   "vectron/infrastructure/cities.spec",
+  "vectron/infrastructure/roads.spec",
   "vectron/overlays/101_hp_bars.spec",
   "vectron/overlays/grid.spec",
   "vectron/overlays/movement_selection.spec",
@@ -294,7 +295,7 @@ styles =
       "road.maglev",            "Single1"
       "road.pave",              "Single1"
       "road.rail",              "Single1"
-      "road.road",              "Single1"
+      "road.road",              "RoadAllCombined"
       "road.river",             "River"
       "ts.arctic_ivory",        "Single1"
       "ts.buffalo",             "Single1"
