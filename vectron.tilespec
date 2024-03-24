@@ -43,25 +43,25 @@ fog_style = "Sprite"
 darkness_style = "CardinalSingle"
 
 ; Offset for flags and other sprites
-activity_offset_x = 0
-activity_offset_y = 0
-city_flag_offset_x = 0
-city_flag_offset_y = 0
+activity_offset_x = 210
+activity_offset_y = 30
+city_flag_offset_x = 120
+city_flag_offset_y = 40
 city_offset_x = 0
 city_offset_y = 0
 city_size_offset_x = 0
 city_size_offset_y = 0
-citybar_offset_y = -33
+citybar_offset_y = 90
 occupied_offset_x = 0
 occupied_offset_y = 0
 select_offset_x = 0
 select_offset_y = 0
 tilelabel_offset_y = 0
 unit_default_orientation = "s"
-unit_flag_offset_x = 0
-unit_flag_offset_y = 0
-unit_offset_x = 0
-unit_offset_y = 0
+unit_flag_offset_x = 120
+unit_flag_offset_y = 30
+unit_offset_x = 84
+unit_offset_y = 18
 unit_upkeep_offset_y = 0
 unit_upkeep_small_offset_y = 0
 
@@ -145,6 +145,7 @@ files =
   "vectron/terrain/water.spec",
   "vectron/terrain/borders/borders.spec",
   "vectron/terrain/edited-borders/borders.spec",
+  "vectron/units_amplio.spec",
   "vectron/units/foot_units.spec"
 
 ; Color definitions from the main project
